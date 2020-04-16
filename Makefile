@@ -29,6 +29,9 @@ TESTDIR := test/
 #BUILD DIRECTORY
 BUILDDIR := build/
 
+#SOURCE EXEC
+SRCEXEC := ScenarioCheela
+
 #TEST EXEC
 TESTEXEC := Tester
 
@@ -64,16 +67,16 @@ run: compile
 ifneq ($(TEST), -1)
 	java -classpath $(BUILDDIR) $(TESTEXEC) $(TEST)
 else
-	@echo -e $(RED) make run for source is not implemented yet. $(NOCOLOR)
+	java -classpath $(BUILDDIR) $(SRCEXEC)
 endif
-	@echo $(PURPLE) Successful! $(NOCOLOR)
+	@echo $(RED) Successful! $(NOCOLOR)
 
 compile: | $(BUILDDIR)
 	@echo -e $(GRAY) Compiling... $(NOCOLOR)
 ifneq ($(TEST), -1)
 	javac -d $(BUILDDIR) -classpath $(TESTDIR)$(JPATHSEP)$(SRCDIR) $(TESTDIR)$(TESTEXEC).java
 else
-	@echo -e $(RED) make compile for source is not implemented yet. $(NOCOLOR)
+	javac -d $(BUILDDIR) -classpath $(SRCDIR) $(SRCDIR)$(SRCEXEC).java
 endif
 	@echo $(BLUE) Successful! $(NOCOLOR)
 
