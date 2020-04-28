@@ -1,4 +1,4 @@
-package sample;
+package sve.gui.sample;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
