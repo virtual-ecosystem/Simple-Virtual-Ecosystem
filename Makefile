@@ -20,20 +20,8 @@ endif
 #COMPILER
 JC := javac
 
-#SOURCE DIRECTORY
-SRCDIR := src/
-
-#TEST DIRECTORY
-TESTDIR := test/
-
-#BUILD DIRECTORY
-BUILDDIR := build/
-
-#SOURCE EXEC
-SRCEXEC := ScenarioCheela
-
-#TEST EXEC
-TESTEXEC := Tester
+#EXECUTOR
+JVM := java
 
 # Build Options
 # default and -1 makes source codes
@@ -43,48 +31,66 @@ TESTEXEC := Tester
 # 3 makes tests for gui module
 TEST ?= -1
 
-#RED COLOR
+#COLOR CODES
 RED := '\033[1;31m'
-
-#GRAY COLOR
 GRAY := '\033[0;37m'
-
-#BLUE COLOR
 BLUE := '\033[1;34m'
-
-#PURPLE COLOR
 PURPLE := '\033[1;35m'
-
-#CYAN COLOR
 CYAN := '\033[1;36m'
+ENDCOLOR := '\033[0m'
 
-#NO COLOR
-NOCOLOR := '\033[0m'
+#BUILD DIRECTORY
+BUILDDIR := build/
 
-.PHONY: compile run clean
-run: compile
-	@echo -e $(GRAY) Running... $(NOCOLOR)
+rwildcard = $(foreach d, $(wildcard $(1:=/*)), $(call rwildcard,$d,$2)) $(filter $(subst *,%,$2), $d)
+
 ifneq ($(TEST), -1)
-	java -classpath $(BUILDDIR) $(TESTEXEC) $(TEST)
-else
-	java -classpath $(BUILDDIR) $(SRCEXEC)
-endif
-	@echo $(RED) Successful! $(NOCOLOR)
 
-compile: | $(BUILDDIR)
-	@echo -e $(GRAY) Compiling... $(NOCOLOR)
-ifneq ($(TEST), -1)
-	javac -d $(BUILDDIR) -classpath $(TESTDIR)$(JPATHSEP)$(SRCDIR) $(TESTDIR)$(TESTEXEC).java
+#SOURCE DIRECTORY
+SRCDIR := test/
+
+#SOURCE FILES
+SRCS := $(call rwildcard, test, *.java)
+
+#EXEC
+EXEC := Tester
+
 else
-	javac -d $(BUILDDIR) -classpath $(SRCDIR) $(SRCDIR)$(SRCEXEC).java
+
+#SOURCE DIRECTORY
+SRCDIR := src/
+
+#SOURCE FILES
+SRCS := $(call rwildcard, src, *.java)
+
+#EXEC
+EXEC := ScenarioCheela
+
 endif
-	@echo $(BLUE) Successful! $(NOCOLOR)
+
+CLASSES := $(SRCS:$(SRCDIR)%.java=$(BUILDDIR)%.class)
+
+COMPILEINFO := 1
+
+$(EXEC): $(CLASSES)
+	@echo -e $(PURPLE) Running... $(ENDCOLOR)
+	$(JVM) -classpath $(BUILDDIR) $@ $(TEST)
+	@echo $(RED) Successful! $(ENDCOLOR)
+
+$(BUILDDIR)%.class: $(SRCDIR)%.java | $(BUILDDIR)
+	@if [ $(COMPILEINFO) -eq 1 ]; then \
+		echo $(BLUE) Compiling: $(ENDCOLOR); \
+		$(eval COMPILEINFO = 0) \
+	fi;
+	$(JC) -d $(BUILDDIR) -classpath $(SRCDIR) $<
 
 $(BUILDDIR):
+	@echo -e $(GRAY) Creating folder $@ $(ENDCOLOR)
 	mkdir $@
 
+.PHONY: clean
 clean:
 	rm -rf $(BUILDDIR)
-	@echo -e $(CYAN) Cleaned output files... $(NOCOLOR)
+	@echo -e $(CYAN) Cleaned output files... $(ENDCOLOR)
 
 # end
