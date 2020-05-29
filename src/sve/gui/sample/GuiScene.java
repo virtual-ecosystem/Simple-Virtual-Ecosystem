@@ -10,13 +10,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class GuiScene extends Application implements EventHandler<ActionEvent> {
+public class GuiScene extends Application implements EventHandler<ActionEvent>,environmentConstants{
+    private FirstScene firstScene = new FirstScene(new Stage());
     StackPane layout;
     Stage window;
     Scene scene1;
-
-    private static final Integer MAIN_WIDTH = 1280;
-    private static final Integer MAIN_HEIGHT = 960;
 
     @Override
     public void start(Stage primaryStage) {
