@@ -18,20 +18,14 @@ public class GuiScene extends Application implements EventHandler<ActionEvent>,e
 
     @Override
     public void start(Stage primaryStage) {
-        window = primaryStage;
+        primaryStage = firstScene.getStage();
 
-        firstSceneCreator();
-        primaryStage.setScene(scene1);
+        primaryStage.setScene(firstScene.getScene());
         primaryStage.show();
     }
 
     public void start(){
         launch();
-    }
-
-    public void firstSceneCreator() {
-        layout = new StackPane();
-        scene1 = new Scene(layout, MAIN_WIDTH, MAIN_HEIGHT);
     }
 
     @Override
