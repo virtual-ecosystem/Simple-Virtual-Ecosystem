@@ -19,7 +19,7 @@ public class GuiScene extends Application implements EventHandler<ActionEvent> {
     private static final Integer MAIN_HEIGHT = 960;
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) {
         window = primaryStage;
 
         firstSceneCreator();
@@ -27,15 +27,18 @@ public class GuiScene extends Application implements EventHandler<ActionEvent> {
         primaryStage.show();
     }
 
+    public void start(){
+        launch();
+    }
+
     public void firstSceneCreator() {
         layout = new StackPane();
         scene1 = new Scene(layout, MAIN_WIDTH, MAIN_HEIGHT);
     }
 
-
     @Override
     public void handle(ActionEvent event) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
 
