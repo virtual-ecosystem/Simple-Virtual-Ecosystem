@@ -12,9 +12,6 @@ import java.io.IOException;
 
 public class GuiScene extends Application implements EventHandler<ActionEvent>,environmentConstants{
     private FirstScene firstScene = new FirstScene(new Stage());
-    StackPane layout;
-    Stage window;
-    Scene scene1;
 
     @Override
     public void start(Stage primaryStage) {
