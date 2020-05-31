@@ -1,7 +1,9 @@
 package sve.gui.sample;
 
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 
 public class SecondScene implements environmentConstants {
     private Scene scene;
@@ -12,6 +14,43 @@ public class SecondScene implements environmentConstants {
     private double gameDisplayDY;
 
     public Scene getScene(){ return scene; }
+
+    private EventHandler<KeyEvent> keyReleased = new EventHandler<KeyEvent>() {
+        @Override
+        public void handle(KeyEvent event) {
+            switch (event.getCode()) {
+                case W:
+                case S:
+                    gameDisplayDY = 0;
+                    break;
+                case A:
+                case D:
+                    gameDisplayDX = 0;
+                    break;
+            }
+        }
+    };
+
+    private EventHandler<KeyEvent> keyPressed = new EventHandler<KeyEvent>() {
+        @Override
+        public void handle(KeyEvent event) {
+            // start movement according to key pressed
+            switch (event.getCode()) {
+                case W:
+                    gameDisplayDY = -6;
+                    break;
+                case S:
+                    gameDisplayDY = 6;
+                    break;
+                case A:
+                    gameDisplayDX = -6;
+                    break;
+                case D:
+                    gameDisplayDX = 6;
+                    break;
+            }
+        }
+    };
 
     public void setGameDisplayX(double x){ gameDisplay.setTranslateX(x); }
 
