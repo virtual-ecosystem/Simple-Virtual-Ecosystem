@@ -15,12 +15,23 @@ public class GuiScene extends Application implements EventHandler<ActionEvent>,e
     private FirstScene firstScene = new FirstScene(new Stage());
     private SecondScene secondScene = new SecondScene();
 
+    private double gameDisplayX = secondScene.getGameDisplayX();
+    private double gameDisplayY = secondScene.getGameDisplayY();
+
     private AnimationTimer timer = new AnimationTimer() {
         @Override
         public void handle(long now) {
-            //for update
+            update();
         }
     };
+
+    private void update(){
+        gameDisplayX += secondScene.getGameDisplayDX();
+        gameDisplayY += secondScene.getGameDisplayDY();
+
+        secondScene.setGameDisplayX(gameDisplayX);
+        secondScene.setGameDisplayY(gameDisplayY);
+    }
 
     @Override
     public void start(Stage primaryStage) {
