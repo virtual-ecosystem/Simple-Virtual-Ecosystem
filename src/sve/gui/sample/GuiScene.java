@@ -21,6 +21,7 @@ public class GuiScene extends Application implements EventHandler<ActionEvent>,e
     private AnimationTimer timer = new AnimationTimer() {
         @Override
         public void handle(long now) {
+            // update paddle positions
             update();
         }
     };

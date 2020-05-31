@@ -1,7 +1,6 @@
 package sve.gui.sample;
 
 import javafx.animation.AnimationTimer;
-import javafx.embed.swing.SwingNode;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -30,7 +29,6 @@ public class SecondScene implements environmentConstants {
         tabPane.getStylesheets().add(getClass().getResource("GameDisplay.css").toExternalForm());
 
         Group myGroup = secondSceneGroupCreator(timer);
-
         Tab tab0 = new Tab("Main Tab");
         tab0.setContent(myGroup);
 
@@ -95,8 +93,8 @@ public class SecondScene implements environmentConstants {
     }
 
     private void secondSceneAnimalCreator(Group gameDisplay){
-        AnimalTemplate cheetahTemplate = new AnimalTemplate("file:src/sample/images/64-cheetah.jpg");
-        AnimalTemplate gazelleTemplate = new AnimalTemplate("file:src/sample/images/64-gazelle.jpg");
+        AnimalTemplate cheetahTemplate = new AnimalTemplate("file:src/sve/gui/sample/images/64-cheetah.jpg");
+        AnimalTemplate gazelleTemplate = new AnimalTemplate("file:src/sve/gui/sample/images/64-gazelle.jpg");
 
         Animal cheetah = new Animal(cheetahTemplate.getImagePath(),randomlyLocationX(),randomlyLocationY());
         Animal gazelle = new Animal(gazelleTemplate.getImagePath(),randomlyLocationX(),randomlyLocationY());

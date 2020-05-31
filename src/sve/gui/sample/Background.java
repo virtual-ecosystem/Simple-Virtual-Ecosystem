@@ -6,17 +6,17 @@ import static sve.gui.sample.helperMethods.randomlyCreate;
 
 public class Background implements environmentConstants{
     private Group gameDisplay;
-    BlockTemplate grassTemplate = new BlockTemplate("file:src/sample/images/img1.png");
-    BlockTemplate sandTemplate = new BlockTemplate("file:src/sample/images/img2.png");
-    BlockTemplate soilTemplate = new BlockTemplate("file:src/sample/images/img3.png");
-    BlockTemplate stoneTemplate = new BlockTemplate("file:src/sample/images/img4.png");
-    BlockTemplate waterTemplate = new BlockTemplate("file:src/sample/images/img5.png");
-    BlockTemplate tree1Template = new BlockTemplate("file:src/sample/images/img_tree1.png");
-    BlockTemplate tree2Template = new BlockTemplate("file:src/sample/images/img_tree2.png");
-    BlockTemplate small_tree1Template = new BlockTemplate("file:src/sample/images/img_tree_small1.png");
-    BlockTemplate small_tree2Template = new BlockTemplate("file:src/sample/images/img_tree_small2.png");
-    BlockTemplate environment_grass1Template = new BlockTemplate("file:src/sample/images/img_grass1.png");
-    BlockTemplate environment_grass2Template = new BlockTemplate("file:src/sample/images/img_grass2.png");
+    BlockTemplate grassTemplate = new BlockTemplate("file:src/sve/gui/sample/images/img1.png");
+    BlockTemplate sandTemplate = new BlockTemplate("file:src/sve/gui/sample/images/img2.png");
+    BlockTemplate soilTemplate = new BlockTemplate("file:src/sve/gui/sample/images/img3.png");
+    BlockTemplate stoneTemplate = new BlockTemplate("file:src/sve/gui/sample/images/img4.png");
+    BlockTemplate waterTemplate = new BlockTemplate("file:src/sve/gui/sample/images/img5.png");
+    BlockTemplate tree1Template = new BlockTemplate("file:src/sve/gui/sample/images/img_tree1.png");
+    BlockTemplate tree2Template = new BlockTemplate("file:src/sve/gui/sample/images/img_tree2.png");
+    BlockTemplate small_tree1Template = new BlockTemplate("file:src/sve/gui/sample/images/img_tree_small1.png");
+    BlockTemplate small_tree2Template = new BlockTemplate("file:src/sve/gui/sample/images/img_tree_small2.png");
+    BlockTemplate environment_grass1Template = new BlockTemplate("file:src/sve/gui/sample/images/img_grass1.png");
+    BlockTemplate environment_grass2Template = new BlockTemplate("file:src/sve/gui/sample/images/img_grass2.png");
 
     public Background(Group gameDisplay){
         this.gameDisplay = gameDisplay;
