@@ -20,8 +20,9 @@ public class TestManager {
 		Queue<Test> temp = new LinkedList<>();
 
 		while(!testQueue.isEmpty()) {
-			temp.add(testQueue.remove());
-			doTest(temp.element());
+			Test test = testQueue.remove();
+			temp.add(test);
+			doTest(test);
 		}
 
 		testQueue = temp;
