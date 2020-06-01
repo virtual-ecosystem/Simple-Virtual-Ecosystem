@@ -10,6 +10,6 @@ public class SystemTime {
 	}
 
 	public static double deltaTime() {
-		return (System.nanoTime() - staticStart) / NANO_TO_SECONDS;
+		return (System.nanoTime() - start) / NANO_TO_SECONDS;
 	}
 }
