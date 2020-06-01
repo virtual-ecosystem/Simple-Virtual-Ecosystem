@@ -39,29 +39,24 @@ PURPLE := '\033[1;35m'
 CYAN := '\033[1;36m'
 ENDCOLOR := '\033[0m'
 
+#SOURCE DIRECTORY
+SRCDIR := src/
+
+#FILE SEARCHER FUNCTION
+rwildcard = $(foreach d, $(wildcard $(1:=/*)), $(call rwildcard,$d,$2)) $(filter $(subst *,%,$2), $d)
+
+#SOURCE FILES
+SRCS := $(call rwildcard, src, *.java)
+
 #BUILD DIRECTORY
 BUILDDIR := build/
 
-rwildcard = $(foreach d, $(wildcard $(1:=/*)), $(call rwildcard,$d,$2)) $(filter $(subst *,%,$2), $d)
-
 ifneq ($(TEST), -1)
-
-#SOURCE DIRECTORY
-SRCDIR := test/
-
-#SOURCE FILES
-SRCS := $(call rwildcard, test, *.java)
 
 #EXEC
 EXEC := Tester
 
 else
-
-#SOURCE DIRECTORY
-SRCDIR := src/
-
-#SOURCE FILES
-SRCS := $(call rwildcard, src, *.java)
 
 #EXEC
 EXEC := ScenarioCheela
