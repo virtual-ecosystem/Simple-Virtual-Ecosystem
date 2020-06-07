@@ -1,4 +1,4 @@
-package sve.core;
+package sve.event;
 
 import java.util.Set;
 import java.util.HashSet;

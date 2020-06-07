@@ -1,4 +1,4 @@
-package sve.core;
+package sve.event;
 
 public enum EventType {
 	TIME

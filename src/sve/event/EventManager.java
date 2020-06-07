@@ -1,4 +1,4 @@
-package sve.core;
+package sve.event;
 
 import java.util.Map;
 import java.util.HashMap;

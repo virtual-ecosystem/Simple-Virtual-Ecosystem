@@ -1,4 +1,4 @@
-package sve.core;
+package sve.event;
 
 /**
  * Any class that will have/need events
