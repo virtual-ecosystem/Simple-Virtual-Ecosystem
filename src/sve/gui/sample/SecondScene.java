@@ -18,17 +18,40 @@ import static sve.gui.sample.helperMethods.randomlyLocationY;
 public class SecondScene implements environmentConstants {
     private Scene scene;
     private Group gameDisplay = new Group();
+    private int mapWidth;
+    private int mapHeight;
     private double gameDisplayX = 0;
     private double gameDisplayY = 0;
     private double gameDisplayDX;
     private double gameDisplayDY;
 
-    public void secondSceneCreator(AnimationTimer timer){
+    public SecondScene(int mapWidth, int mapHeight){
+        this.mapWidth = mapWidth;
+        this.mapHeight = mapHeight;
+    }
+
+    private AnimationTimer timer = new AnimationTimer() {
+        @Override
+        public void handle(long now) {
+            // update paddle positions
+            update();
+        }
+    };
+
+    private void update(){
+        gameDisplayX += getGameDisplayDX();
+        gameDisplayY += getGameDisplayDY();
+
+        setGameDisplayX(gameDisplayX);
+        setGameDisplayY(gameDisplayY);
+    }
+
+    public void secondSceneCreator(){
         TabPane tabPane = new TabPane();
         tabPane.setId("tabPane");
         tabPane.getStylesheets().add(getClass().getResource("GameDisplay.css").toExternalForm());
 
-        Group myGroup = secondSceneGroupCreator(timer);
+        Group myGroup = secondSceneGroupCreator();
         Tab tab0 = new Tab("Main Tab");
         tab0.setContent(myGroup);
 
@@ -65,7 +88,7 @@ public class SecondScene implements environmentConstants {
         scene = new Scene(tabPane,MAIN_WIDTH,MAIN_HEIGHT);
     }
 
-    public Group secondSceneGroupCreator(AnimationTimer timer) {
+    public Group secondSceneGroupCreator() {
         gameDisplay.getStylesheets().add(getClass().getResource("GameDisplay.css").toExternalForm());
 
         //draws field lines
@@ -87,7 +110,7 @@ public class SecondScene implements environmentConstants {
 
     private void secondSceneBackgroundCreator(Group gameDisplay){
         Background background = new Background(gameDisplay);
-        background.setBackground();
+        background.setBackground(mapWidth,mapHeight);
 
         secondSceneAnimalCreator(gameDisplay);
     }
@@ -104,7 +127,7 @@ public class SecondScene implements environmentConstants {
 
     public Scene getScene(){ return scene; }
 
-    private EventHandler<KeyEvent> keyReleased = new EventHandler<KeyEvent>() {
+    private EventHandler<KeyEvent> keyReleased = new EventHandler<>() {
         @Override
         public void handle(KeyEvent event) {
             switch (event.getCode()) {
@@ -120,7 +143,7 @@ public class SecondScene implements environmentConstants {
         }
     };
 
-    private EventHandler<KeyEvent> keyPressed = new EventHandler<KeyEvent>() {
+    private EventHandler<KeyEvent> keyPressed = new EventHandler<>() {
         @Override
         public void handle(KeyEvent event) {
             // start movement according to key pressed
@@ -153,11 +176,11 @@ public class SecondScene implements environmentConstants {
         return gameDisplayDY;
     }
 
-    public double getGameDisplayX() {
-        return gameDisplayX;
+    public void setMapWidth(int mapWidth) {
+        this.mapWidth = mapWidth;
     }
 
-    public double getGameDisplayY() {
-        return gameDisplayY;
+    public void setMapHeight(int mapHeight) {
+        this.mapHeight = mapHeight;
     }
 }

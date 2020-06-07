@@ -22,9 +22,9 @@ public class Background implements environmentConstants{
         this.gameDisplay = gameDisplay;
     }
 
-    public void setBackground(){
-        int x = MAIN_WIDTH / 64;  // 20
-        int y = MAIN_HEIGHT / 64;  // 15
+    public void setBackground(int mapWidth,int mapHeight){
+        int x = mapWidth / NXN;  // 20
+        int y = mapHeight / NXN;  // 15
 
         for(int i=0;i<x;++i){
             for(int j=0;j<y;++j){
