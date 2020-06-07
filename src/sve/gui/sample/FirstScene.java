@@ -15,14 +15,14 @@ public class FirstScene implements environmentConstants {
         this.window = window;
     }
 
-    public void firstSceneCreator(Scene scene2){
-        firstSceneButtonCreator(scene2,"Start","Options","Exit");
+    public void firstSceneCreator(Scene scene2,Scene optionScene){
+        firstSceneButtonCreator(scene2,optionScene,"Start","Options","Exit");
         StackPane layout = new StackPane();
         layout.getChildren().addAll(start,options,exit);
         scene = new Scene(layout, MAIN_WIDTH, MAIN_HEIGHT);
     }
 
-    public void firstSceneButtonCreator(Scene scene2,String text1,String text2,String text3){
+    public void firstSceneButtonCreator(Scene scene2,Scene optionScene,String text1,String text2,String text3){
         start = new Button(text1);
         start.setPrefSize(300, 100);
         start.setTranslateX(0);
@@ -33,7 +33,7 @@ public class FirstScene implements environmentConstants {
         options.setPrefSize(300, 100);
         options.setTranslateX(0);
         options.setTranslateY(0);
-        options.setOnAction(e -> window.setScene(scene2));
+        options.setOnAction(e -> window.setScene(optionScene));
 
         exit = new Button(text3);
         exit.setPrefSize(300, 100);

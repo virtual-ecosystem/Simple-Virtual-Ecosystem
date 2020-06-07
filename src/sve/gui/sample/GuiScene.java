@@ -14,6 +14,7 @@ import java.io.IOException;
 public class GuiScene extends Application implements EventHandler<ActionEvent>,environmentConstants{
     private FirstScene firstScene = new FirstScene(new Stage());
     private SecondScene secondScene = new SecondScene();
+    private OptionScene optionScene = new OptionScene();
 
     private double gameDisplayX = secondScene.getGameDisplayX();
     private double gameDisplayY = secondScene.getGameDisplayY();
@@ -38,8 +39,9 @@ public class GuiScene extends Application implements EventHandler<ActionEvent>,e
     public void start(Stage primaryStage) {
         primaryStage = firstScene.getStage();
 
+        optionScene.OptionSceneCreator();
         secondScene.secondSceneCreator(getTimer());
-        firstScene.firstSceneCreator(secondScene.getScene());
+        firstScene.firstSceneCreator(secondScene.getScene(),optionScene.getScene());
 
         primaryStage.setScene(firstScene.getScene());
         primaryStage.show();
