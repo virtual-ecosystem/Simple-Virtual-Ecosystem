@@ -38,7 +38,7 @@ public class OptionScene implements environmentConstants{
                 int mapW = Integer.parseInt(mapWidthText.getText());
                 int mapH = Integer.parseInt(mapHeightText.getText());
                 SecondScene secondScene = new SecondScene(mapW,mapH);
-                secondScene.secondSceneCreator();
+                secondScene.secondSceneCreator(stage,firstScene);
 
                 firstScene.setSecondScene(secondScene);
             }

@@ -2,15 +2,20 @@ package sve.gui.sample;
 
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 import static sve.gui.sample.helperMethods.randomlyLocationX;
 import static sve.gui.sample.helperMethods.randomlyLocationY;
@@ -46,7 +51,11 @@ public class SecondScene implements environmentConstants {
         setGameDisplayY(gameDisplayY);
     }
 
-    public void secondSceneCreator(){
+    public void secondSceneCreator(Stage stage, FirstScene firstScene){
+        Button back = new Button("Back to Menu");
+        back.setAlignment(Pos.TOP_LEFT);
+        back.setOnAction(e -> stage.setScene(firstScene.getScene()));
+
         TabPane tabPane = new TabPane();
         tabPane.setId("tabPane");
         tabPane.getStylesheets().add(getClass().getResource("GameDisplay.css").toExternalForm());
@@ -85,7 +94,10 @@ public class SecondScene implements environmentConstants {
 
         tabPane.getTabs().addAll(tab0,tab1,tab2);
 
-        scene = new Scene(tabPane,MAIN_WIDTH,MAIN_HEIGHT);
+        BorderPane borderPane = new BorderPane(tabPane);
+        borderPane.setTop(back);
+
+        scene = new Scene(borderPane,MAIN_WIDTH,MAIN_HEIGHT);
     }
 
     public Group secondSceneGroupCreator() {
@@ -100,6 +112,7 @@ public class SecondScene implements environmentConstants {
         game.setFocusTraversable(true);
         game.setOnKeyPressed(keyPressed);
         game.setOnKeyReleased(keyReleased);
+        game.addEventFilter(MouseEvent.ANY, (e) -> game.requestFocus());
 
         gameDisplay.getChildren().addAll(game);
         // start updates of paddle positions

@@ -27,7 +27,7 @@ public class FirstScene implements environmentConstants {
         OptionScene optionScene = new OptionScene();
         optionScene.OptionSceneCreator(window,this);
 
-        secondScene.secondSceneCreator();
+        secondScene.secondSceneCreator(window,this);
 
         start = new Button(text1);
         start.setPrefSize(300, 100);
