@@ -33,14 +33,18 @@ public class EventManager {
 	}
 
 	public void onEvent(EventType type) {
+	public void callEvent(EventType type) {
 		//TODO for each event priority
 	}
 
 	public void onEvent(EventType type, EventPriority priority) {
 		onEvent(EventKey.valueOf(type, priority));
+	public void callEvent(EventType type, EventPriority priority) {
+		callEvent(EventKey.valueOf(type, priority));
 	}
 
 	public void onEvent(EventKey key) {
+	public void callEvent(EventKey key) {
 
 		Speaker speaker = events.get(key);
 		if(speaker == null)
