@@ -19,9 +19,7 @@ public class EventManager {
 			speaker = events.put(key, new Speaker());
 		}
 
-		speaker.add(listener);
-
-		return true;
+		return speaker.add(listener);
 	}
 
 	public boolean unregister(EventKey key, Listener listener) {
