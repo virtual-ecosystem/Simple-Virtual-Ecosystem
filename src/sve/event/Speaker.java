@@ -3,7 +3,7 @@ package sve.event;
 import java.util.Set;
 import java.util.HashSet;
 
-public class Speaker {
+class Speaker {
 
 	private Set<Listener> listeners;
 
