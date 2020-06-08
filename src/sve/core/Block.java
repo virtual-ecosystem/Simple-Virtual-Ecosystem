@@ -1,5 +1,5 @@
 package sve.core;
 
-public class Block {
+public abstract class Block {
 	
 }
