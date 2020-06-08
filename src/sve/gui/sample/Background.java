@@ -1,10 +1,12 @@
 package sve.gui.sample;
 
 import javafx.scene.Group;
+import javafx.scene.canvas.Canvas;
 
 import static sve.gui.sample.helperMethods.randomlyCreate;
 
 public class Background implements environmentConstants{
+    private Canvas canvas;
     private Group gameDisplay;
     BlockTemplate grassTemplate = new BlockTemplate("file:src/sve/gui/sample/images/img1.png");
     BlockTemplate sandTemplate = new BlockTemplate("file:src/sve/gui/sample/images/img2.png");
@@ -50,5 +52,13 @@ public class Background implements environmentConstants{
                 }
             }
         }
+    }
+
+    public Canvas getCanvas() {
+        return canvas;
+    }
+
+    public void setCanvas(Canvas canvas) {
+        this.canvas = canvas;
     }
 }

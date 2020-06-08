@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import static sve.gui.sample.helperMethods.randomlyLocationX;
@@ -60,7 +61,7 @@ public class SecondScene implements environmentConstants {
         tabPane.setId("tabPane");
         tabPane.getStylesheets().add(getClass().getResource("GameDisplay.css").toExternalForm());
 
-        Group myGroup = secondSceneGroupCreator();
+        Group myGroup = secondSceneGroupCreator(stage);
         Tab tab0 = new Tab("Main Tab");
         tab0.setContent(myGroup);
 
@@ -100,40 +101,49 @@ public class SecondScene implements environmentConstants {
         scene = new Scene(borderPane,MAIN_WIDTH,MAIN_HEIGHT);
     }
 
-    public Group secondSceneGroupCreator() {
+    public Group secondSceneGroupCreator(Stage stage) {
         gameDisplay.getStylesheets().add(getClass().getResource("GameDisplay.css").toExternalForm());
 
-        //draws field lines
-        Canvas game = new Canvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+        secondSceneBackgroundCreator(stage,gameDisplay);
 
-        secondSceneBackgroundCreator(gameDisplay);
-
-        // register event handlers to Canvas
-        game.setFocusTraversable(true);
-        game.setOnKeyPressed(keyPressed);
-        game.setOnKeyReleased(keyReleased);
-        game.addEventFilter(MouseEvent.ANY, (e) -> game.requestFocus());
-
-        gameDisplay.getChildren().addAll(game);
-        // start updates of paddle positions
         timer.start();
 
         return gameDisplay;
     }
 
-    private void secondSceneBackgroundCreator(Group gameDisplay){
+    private void secondSceneBackgroundCreator(Stage stage,Group gameDisplay){
         Background background = new Background(gameDisplay);
         background.setBackground(mapWidth,mapHeight);
+        background.setCanvas(new Canvas(mapWidth,mapHeight));
 
-        secondSceneAnimalCreator(gameDisplay);
+        background.getCanvas().setFocusTraversable(true);
+        background.getCanvas().setOnKeyPressed(keyPressed);
+        background.getCanvas().setOnKeyReleased(keyReleased);
+        background.getCanvas().addEventFilter(MouseEvent.ANY, (e) -> background.getCanvas().requestFocus());
+
+        gameDisplay.getChildren().add(background.getCanvas());
+        secondSceneAnimalCreator(stage,gameDisplay);
     }
 
-    private void secondSceneAnimalCreator(Group gameDisplay){
+    private void secondSceneAnimalCreator(Stage stage,Group gameDisplay){
         AnimalTemplate cheetahTemplate = new AnimalTemplate("file:src/sve/gui/sample/images/64-cheetah.jpg");
         AnimalTemplate gazelleTemplate = new AnimalTemplate("file:src/sve/gui/sample/images/64-gazelle.jpg");
 
         Animal cheetah = new Animal(cheetahTemplate.getImagePath(),randomlyLocationX(),randomlyLocationY());
         Animal gazelle = new Animal(gazelleTemplate.getImagePath(),randomlyLocationX(),randomlyLocationY());
+
+        StatsPopup cheetahPopup = new StatsPopup("Cheetah");
+
+        cheetah.getImageView().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (!cheetahPopup.getPopup().isShowing()){
+                    cheetahPopup.getPopup().show(stage);
+                    cheetahPopup.getPopup().setX(stage.getX() + MAIN_WIDTH + 8);
+                    cheetahPopup.getPopup().setY(stage.getY() + 2);
+                }
+            }
+        });
 
         gameDisplay.getChildren().addAll(cheetah.getImageView(),gazelle.getImageView());
     }
@@ -187,13 +197,5 @@ public class SecondScene implements environmentConstants {
 
     public double getGameDisplayDY() {
         return gameDisplayDY;
-    }
-
-    public void setMapWidth(int mapWidth) {
-        this.mapWidth = mapWidth;
-    }
-
-    public void setMapHeight(int mapHeight) {
-        this.mapHeight = mapHeight;
     }
 }
