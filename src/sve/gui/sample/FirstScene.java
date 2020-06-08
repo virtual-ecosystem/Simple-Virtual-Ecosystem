@@ -3,7 +3,10 @@ package sve.gui.sample;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 
 public class FirstScene implements environmentConstants {
@@ -17,9 +20,19 @@ public class FirstScene implements environmentConstants {
     }
 
     public void firstSceneCreator(){
+        Label label = new Label("Group 9");
+        label.setId("firstSceneLabel");
+        label.setTranslateY(-350);
+        Label label2 = new Label("Simple Virtual Ecosystem");
+        label2.setId("firstSceneLabel");
+        label2.setTranslateY(-300);
+
         firstSceneButtonCreator("Start","Options","Exit");
         StackPane layout = new StackPane();
-        layout.getChildren().addAll(start,options,exit);
+        layout.setId("firstScenePane");
+        layout.getChildren().addAll(start,options,exit,label,label2);
+        layout.getStylesheets().add("file:src/sve/gui/sample/GameDisplay.css");
+
         scene = new Scene(layout, MAIN_WIDTH, MAIN_HEIGHT);
     }
 
@@ -30,18 +43,21 @@ public class FirstScene implements environmentConstants {
         secondScene.secondSceneCreator(window,this);
 
         start = new Button(text1);
+        start.setId("firstSceneButton");
         start.setPrefSize(300, 100);
         start.setTranslateX(0);
         start.setTranslateY(-150);
         start.setOnAction(e -> window.setScene(secondScene.getScene()));
 
         options = new Button(text2);
+        options.setId("firstSceneButton");
         options.setPrefSize(300, 100);
         options.setTranslateX(0);
         options.setTranslateY(0);
         options.setOnAction(e -> window.setScene(optionScene.getScene()));
 
         exit = new Button(text3);
+        exit.setId("firstSceneButton");
         exit.setPrefSize(300, 100);
         exit.setTranslateX(0);
         exit.setTranslateY(150);

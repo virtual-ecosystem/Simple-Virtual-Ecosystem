@@ -12,6 +12,46 @@
     -fx-background-color: white;
     -fx-font-size: 18px;
 }
+#firstSceneLabel{
+    -fx-font-size: 35px;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+#firstSceneButton {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #54a379 0%, #48c587 100%),
+            #47959d,
+            #73c7d8,
+            radial-gradient(center 50% 50%, radius 100%, #75a8d8, #48c587);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.65em;
+}
+#firstSceneButton:hover {
+    -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #54a379 0%, #48c587 100%),
+            #47959d,
+            #73c7d8,
+            radial-gradient(center 50% 50%, radius 100%, #35ced8, #21c579);
+}
+#firstSceneButton:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+#firstSceneButton Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #2416a3, 0,0,0,2 );
+}
+#firstScenePane{
+    -fx-background-image: url("https://images.wallpaperscraft.com/image/background_spots_texture_surface_pale_50608_1280x960.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 1280 960;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
 .text-field {
     -fx-background-color: transparent, white, transparent, white;
     -fx-background-radius: 0, 0, 0, 0;

@@ -72,6 +72,7 @@ public class OptionScene implements environmentConstants{
         hbox.setAlignment(Pos.CENTER);
 
         BorderPane borderPane = new BorderPane(hbox);
+        borderPane.setId("firstScenePane");
         borderPane.setTop(back);
 
         this.scene = new Scene(borderPane,MAIN_WIDTH,MAIN_HEIGHT);
