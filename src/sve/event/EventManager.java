@@ -51,7 +51,9 @@ public class EventManager {
 	 * @param type called event type
 	 */
 	public void callEvent(EventType type) {
-		//TODO for each event priority
+		for(EventPriority priority : EventPriority.values()) {
+			callEvent(EventKey.valueOf(type, priority));
+		}
 	}
 
 
