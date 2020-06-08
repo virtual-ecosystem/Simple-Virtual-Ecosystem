@@ -4,9 +4,13 @@
 #options{
     -fx-font-size: 22px;
 }
-#popupLabel{
+#popupLabelTitle{
     -fx-background-color: white;
     -fx-font-size: 25px;
+}
+#popupLabel{
+    -fx-background-color: white;
+    -fx-font-size: 18px;
 }
 .text-field {
     -fx-background-color: transparent, white, transparent, white;

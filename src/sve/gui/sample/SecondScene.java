@@ -132,15 +132,23 @@ public class SecondScene implements environmentConstants {
         Animal cheetah = new Animal(cheetahTemplate.getImagePath(),randomlyLocationX(),randomlyLocationY());
         Animal gazelle = new Animal(gazelleTemplate.getImagePath(),randomlyLocationX(),randomlyLocationY());
 
-        StatsPopup cheetahPopup = new StatsPopup("Cheetah");
+        StatsPopup cheetahPopup = new StatsPopup(stage,"Cheetah");
+        StatsPopup gazellePopup = new StatsPopup(stage,"Gazelle");
 
         cheetah.getImageView().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 if (!cheetahPopup.getPopup().isShowing()){
-                    cheetahPopup.getPopup().show(stage);
-                    cheetahPopup.getPopup().setX(stage.getX() + MAIN_WIDTH + 8);
-                    cheetahPopup.getPopup().setY(stage.getY() + 2);
+                    cheetahPopup.showPopup();
+                }
+            }
+        });
+
+        gazelle.getImageView().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (!gazellePopup.getPopup().isShowing()){
+                    gazellePopup.showPopup();
                 }
             }
         });

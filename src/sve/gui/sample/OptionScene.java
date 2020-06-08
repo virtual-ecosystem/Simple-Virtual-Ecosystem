@@ -35,11 +35,28 @@ public class OptionScene implements environmentConstants{
         save.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                int mapW = Integer.parseInt(mapWidthText.getText());
-                int mapH = Integer.parseInt(mapHeightText.getText());
-                SecondScene secondScene = new SecondScene(mapW,mapH);
-                secondScene.secondSceneCreator(stage,firstScene);
-
+                SecondScene secondScene;
+                try {
+                    int mapW = Integer.parseInt(mapWidthText.getText());
+                    int mapH = Integer.parseInt(mapHeightText.getText());
+                    if(mapW < 0 || mapH < 0){
+                        mapW = 1280;
+                        mapH = 960;
+                        Toast.makeText(stage, "Both values must be positive.", 2500, 500, 500);
+                    } else if(mapW > 6000 || mapH > 6000){
+                        mapW = 1280;
+                        mapH = 960;
+                        Toast.makeText(stage, "Values can't be higher than 6000.", 2500, 500, 500);
+                    }
+                    secondScene = new SecondScene(mapW, mapH);
+                    secondScene.secondSceneCreator(stage, firstScene);
+                } catch (Exception ex) {
+                    int mapW = 1280;
+                    int mapH = 960;
+                    secondScene = new SecondScene(mapW, mapH);
+                    secondScene.secondSceneCreator(stage, firstScene);
+                    Toast.makeText(stage, "Please enter a valid value", 2500, 500, 500);
+                }
                 firstScene.setSecondScene(secondScene);
             }
         });
