@@ -4,6 +4,7 @@ import javafx.scene.image.ImageView;
 
 public class Animal extends AnimalTemplate {
     private ImageView imageView;
+    private String name;
 
     public Animal(String path) {
         super(path);
@@ -12,8 +13,9 @@ public class Animal extends AnimalTemplate {
         imageView.setY(0);
     }
 
-    public Animal(String path,int x,int y) {
+    public Animal(String path,String name,int x,int y) {
         super(path);
+        this.name = name;
         imageView = new ImageView(super.getImagePath());
         imageView.setX(x);
         imageView.setY(y);
@@ -21,5 +23,9 @@ public class Animal extends AnimalTemplate {
 
     public ImageView getImageView() {
         return imageView;
+    }
+
+    public String getName() {
+        return name;
     }
 }

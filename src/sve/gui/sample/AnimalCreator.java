@@ -13,17 +13,17 @@ public class AnimalCreator {
         AnimalTemplate cheetahTemplate = new AnimalTemplate("file:src/sve/gui/sample/images/64-cheetah.jpg");
         AnimalTemplate gazelleTemplate = new AnimalTemplate("file:src/sve/gui/sample/images/64-gazelle.jpg");
 
-        Animal cheetah = new Animal(cheetahTemplate.getImagePath(),randomlyLocationX(),randomlyLocationY());
-        Animal gazelle = new Animal(gazelleTemplate.getImagePath(),randomlyLocationX(),randomlyLocationY());
+        Animal cheetah = new Animal(cheetahTemplate.getImagePath(),"cheetah",randomlyLocationX(),randomlyLocationY());
+        Animal gazelle = new Animal(gazelleTemplate.getImagePath(),"gazelle",randomlyLocationX(),randomlyLocationY());
 
-        StatsPopup cheetahPopup = new StatsPopup(stage,"Cheetah");
-        StatsPopup gazellePopup = new StatsPopup(stage,"Gazelle");
+        StatsPopup cheetahPopup = new StatsPopup(cheetah);
+        StatsPopup gazellePopup = new StatsPopup(gazelle);
 
         cheetah.getImageView().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (!cheetahPopup.getPopup().isShowing()){
-                    cheetahPopup.showPopup();
+                if (!cheetahPopup.isShowing()){
+                    cheetahPopup.show(stage);
                 }
             }
         });
@@ -31,8 +31,8 @@ public class AnimalCreator {
         gazelle.getImageView().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (!gazellePopup.getPopup().isShowing()){
-                    gazellePopup.showPopup();
+                if (!gazellePopup.isShowing()){
+                    gazellePopup.show(stage);
                 }
             }
         });
