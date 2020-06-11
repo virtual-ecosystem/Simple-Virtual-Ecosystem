@@ -27,10 +27,11 @@ public class OptionScene implements environmentConstants{
         mapHeightText.setPromptText("Map Height");
 
         Label label = new Label("Options");
-        label.setId("options");
+        label.setId("firstSceneLabel");
         label.setTranslateY(-30);
 
         Button save = new Button("Save");
+        save.setId("firstSceneButton");
         save.setTranslateY(30);
         save.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -62,6 +63,7 @@ public class OptionScene implements environmentConstants{
         });
 
         Button back = new Button("Back to Menu");
+        back.setId("firstSceneButton");
         back.setAlignment(Pos.TOP_LEFT);
         back.setOnAction(e -> stage.setScene(firstScene.getScene()));
 

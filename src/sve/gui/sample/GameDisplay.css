@@ -54,20 +54,23 @@
 }
 .text-field {
     -fx-background-color: transparent, white, transparent, white;
-    -fx-background-radius: 0, 0, 0, 0;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
     -fx-padding: 0.8em;
     -fx-font-size: 18px;
 }
 .text-field:hover {
     -fx-background-color: transparent, #909090, transparent, white;
-    -fx-background-radius: 0, 0, 0, 0;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
     -fx-padding: 0.8em;
     -fx-font-size: 18px;
 }
 
 .text-field:focused {
     -fx-background-color: transparent, #009EF0, transparent, white;
-    -fx-background-radius: 0, 0, 0, 0;
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
     -fx-padding: 0.8em;
     -fx-font-size: 18px;
 }
