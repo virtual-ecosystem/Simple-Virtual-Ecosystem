@@ -64,4 +64,10 @@ public interface LivingBeing extends Resource {
 	 * periods of life
 	 */
 	LifePeriod periodOfLife();
+	
+	/**
+	 * Gestation time of the female living beings
+	 * @return gestation of living beings in months, 0 for males
+	 */
+	int gestation();
 }
