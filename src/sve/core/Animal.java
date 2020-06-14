@@ -1,7 +1,9 @@
 package sve.core;
 
+import sve.gui.Renderable;
+
 // TODO
-public abstract class Animal implements LivingBeing, LifeTime, Movable {
+public abstract class Animal implements LivingBeing, LifeTime, Movable, Renderable {
 
 	@Override
 	public Point2D goTo(Condition condition) {
