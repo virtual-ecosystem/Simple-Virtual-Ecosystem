@@ -3,14 +3,14 @@ package sve.gui.sample;
 import java.util.Random;
 
 public class helperMethods implements environmentConstants{
-    public static int randomlyLocationX(){
+    public static int randomlyLocationX(int width){
         Random random = new Random();
-        return random.nextInt(MAIN_WIDTH);
+        return random.nextInt(width - NXN);
     }
 
-    public static int randomlyLocationY(){
+    public static int randomlyLocationY(int height){
         Random random = new Random();
-        return random.nextInt(MAIN_HEIGHT);
+        return random.nextInt(height - NXN);
     }
 
     public static boolean randomlyCreate(int percentageOfLuck){
