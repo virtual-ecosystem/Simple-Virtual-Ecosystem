@@ -14,7 +14,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Window;
 
 public class StatsPopup extends PopupControl implements environmentConstants{
-    public StatsPopup(Animal animal){
+    public StatsPopup(String animalName){
         StackPane pane = new StackPane();
         pane.getStylesheets().add("file:src/sve/gui/sample/GameDisplay.css");
 
@@ -22,10 +22,10 @@ public class StatsPopup extends PopupControl implements environmentConstants{
         rec.setFill(Color.WHITE);
         rec.setId("dashed-border");
 
-        Label text = new Label(animal.getName());
+        Label text = new Label(animalName.toLowerCase());
         text.setId("popupLabelTitle");
 
-        Image image = new Image("file:src/sve/gui/sample/images/64-" + animal.getName() + ".jpg");
+        Image image = new Image("file:src/sve/gui/sample/images/64-" + animalName.toLowerCase() + ".jpg");
         ImageView imageView = new ImageView(image);
 
         Label speed = new Label("Speed: " + "null");

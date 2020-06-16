@@ -17,6 +17,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import sve.core.Animal;
+import sve.core.Cheetah;
+import sve.core.Gazelle;
+import sve.core.Point2D;
 
 import static sve.gui.sample.helperMethods.randomlyLocationX;
 import static sve.gui.sample.helperMethods.randomlyLocationY;
@@ -126,7 +130,9 @@ public class SecondScene implements environmentConstants {
     }
 
     private void secondSceneAnimalCreator(Stage stage,Group gameDisplay){
-        AnimalCreator.create(stage,gameDisplay);
+        AnimalCreator cheetah = new AnimalCreator(stage,gameDisplay,new Cheetah(),new Point2D(randomlyLocationX(),randomlyLocationY()));
+
+        AnimalCreator gazelle = new AnimalCreator(stage,gameDisplay,new Gazelle(),new Point2D(randomlyLocationX(),randomlyLocationY()));
     }
 
     public Scene getScene(){ return scene; }

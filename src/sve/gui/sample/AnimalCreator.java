@@ -1,42 +1,47 @@
 package sve.gui.sample;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sve.core.Animal;
+import sve.core.Cheetah;
+import sve.core.Point2D;
+import sve.gui.RenderTypes;
+
+import java.lang.reflect.ParameterizedType;
 
 import static sve.gui.sample.helperMethods.randomlyLocationX;
 import static sve.gui.sample.helperMethods.randomlyLocationY;
 
 public class AnimalCreator {
-    public static void create(Stage stage, Group gameDisplay){
-        AnimalTemplate cheetahTemplate = new AnimalTemplate("file:src/sve/gui/sample/images/64-cheetah.jpg");
-        AnimalTemplate gazelleTemplate = new AnimalTemplate("file:src/sve/gui/sample/images/64-gazelle.jpg");
+    public AnimalCreator(Stage stage, Group gameDisplay, Animal animal, Point2D location){
+        String imagePath = animal.pathTo(RenderTypes.ICON);
 
-        Animal cheetah = new Animal(cheetahTemplate.getImagePath(),"cheetah",randomlyLocationX(),randomlyLocationY());
-        Animal gazelle = new Animal(gazelleTemplate.getImagePath(),"gazelle",randomlyLocationX(),randomlyLocationY());
+        ImageView imageView = new ImageView(new Image(imagePath));
+        StatsPopup popup = new StatsPopup(animal.getClass().getSimpleName());
+        Label label = new Label("?");
+        label.setId("animalLabel");
+        VBox vBox = new VBox(label);
+        vBox.setTranslateX(/*location.x*/randomlyLocationX());
+        vBox.setTranslateY(/*location.y*/randomlyLocationY());
+        vBox.getChildren().add(imageView);
+        vBox.setAlignment(Pos.CENTER);
 
-        StatsPopup cheetahPopup = new StatsPopup(cheetah);
-        StatsPopup gazellePopup = new StatsPopup(gazelle);
-
-        cheetah.getImageView().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (!cheetahPopup.isShowing()){
-                    cheetahPopup.show(stage);
+                if (!popup.isShowing()){
+                    popup.show(stage);
                 }
             }
         });
 
-        gazelle.getImageView().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (!gazellePopup.isShowing()){
-                    gazellePopup.show(stage);
-                }
-            }
-        });
-
-        gameDisplay.getChildren().addAll(cheetah.getImageView(),gazelle.getImageView());
+        gameDisplay.getChildren().addAll(vBox);
     }
 }

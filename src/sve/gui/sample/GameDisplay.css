@@ -13,6 +13,11 @@
     -fx-text-fill: black;
     -fx-font-weight: bold;
 }
+#animalLabel{
+    -fx-font-size: 20px;
+    -fx-text-fill: #fffc38;
+    -fx-font-weight: bold;
+}
 #firstSceneLabel{
     -fx-font-size: 35px;
     -fx-text-fill: black;
