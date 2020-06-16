@@ -28,8 +28,8 @@ public class AnimalCreator {
         Label label = new Label("?");
         label.setId("animalLabel");
         VBox vBox = new VBox(label);
-        vBox.setTranslateX(/*location.x*/randomlyLocationX());
-        vBox.setTranslateY(/*location.y*/randomlyLocationY());
+        vBox.setTranslateX(/*location.x*/randomlyLocationX(1280));
+        vBox.setTranslateY(/*location.y*/randomlyLocationY(960));
         vBox.getChildren().add(imageView);
         vBox.setAlignment(Pos.CENTER);
 
