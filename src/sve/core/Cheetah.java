@@ -65,6 +65,6 @@ public class Cheetah extends Animal {
 
     @Override
     public String pathTo(RenderTypes type) {
-        return "file:src/sve/gui/sample/images/64-cheetah.jpg";
+        return "file:src/sve/gui/images/64-cheetah.jpg";
     }
 }
