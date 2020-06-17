@@ -1,12 +1,10 @@
-package sve.gui.sample;
+package sve.gui;
 
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 
 public class FirstScene implements environmentConstants {
@@ -31,7 +29,7 @@ public class FirstScene implements environmentConstants {
         StackPane layout = new StackPane();
         layout.setId("firstScenePane");
         layout.getChildren().addAll(start,options,exit,label,label2);
-        layout.getStylesheets().add("file:src/sve/gui/sample/GameDisplay.css");
+        layout.getStylesheets().add("file:src/sve/gui/GameDisplay.css");
 
         scene = new Scene(layout, MAIN_WIDTH, MAIN_HEIGHT);
     }

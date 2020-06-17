@@ -1,4 +1,4 @@
-package sve.gui.sample;
+package sve.gui;
 
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
@@ -20,8 +20,8 @@ import sve.core.Cheetah;
 import sve.core.Gazelle;
 import sve.core.Point2D;
 
-import static sve.gui.sample.helperMethods.randomlyLocationX;
-import static sve.gui.sample.helperMethods.randomlyLocationY;
+import static sve.gui.helperMethods.randomlyLocationX;
+import static sve.gui.helperMethods.randomlyLocationY;
 
 public class SecondScene implements environmentConstants {
     private Scene scene;

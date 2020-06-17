@@ -1,4 +1,4 @@
-package sve.gui.sample;
+package sve.gui;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -103,7 +103,7 @@ public class OptionScene implements environmentConstants{
         borderPane.setTop(back);
 
         this.scene = new Scene(borderPane,MAIN_WIDTH,MAIN_HEIGHT);
-        this.scene.getStylesheets().add("file:src/sve/gui/sample/GameDisplay.css");
+        this.scene.getStylesheets().add("file:src/sve/gui/GameDisplay.css");
     }
 
     public Scene getScene(){ return scene; }

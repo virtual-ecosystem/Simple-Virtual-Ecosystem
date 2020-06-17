@@ -1,4 +1,4 @@
-package sve.gui.sample;
+package sve.gui;
 
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -16,7 +16,7 @@ import javafx.stage.Window;
 public class StatsPopup extends PopupControl implements environmentConstants{
     public StatsPopup(String animalName){
         StackPane pane = new StackPane();
-        pane.getStylesheets().add("file:src/sve/gui/sample/GameDisplay.css");
+        pane.getStylesheets().add("file:src/sve/gui/GameDisplay.css");
 
         Rectangle rec = new Rectangle(180,295);
         rec.setFill(Color.WHITE);

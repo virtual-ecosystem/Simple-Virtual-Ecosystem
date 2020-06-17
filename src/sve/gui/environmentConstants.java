@@ -1,4 +1,4 @@
-package sve.gui.sample;
+package sve.gui;
 
 public interface environmentConstants {
     Integer MAIN_WIDTH=1280;

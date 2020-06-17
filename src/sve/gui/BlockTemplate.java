@@ -1,4 +1,4 @@
-package sve.gui.sample;
+package sve.gui;
 
 public class BlockTemplate {
     private String blockName;

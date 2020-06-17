@@ -1,4 +1,4 @@
-package sve.gui.sample;
+package sve.gui;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -10,14 +10,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sve.core.Animal;
-import sve.core.Cheetah;
 import sve.core.Point2D;
-import sve.gui.RenderTypes;
 
-import java.lang.reflect.ParameterizedType;
-
-import static sve.gui.sample.helperMethods.randomlyLocationX;
-import static sve.gui.sample.helperMethods.randomlyLocationY;
+import static sve.gui.helperMethods.randomlyLocationX;
+import static sve.gui.helperMethods.randomlyLocationY;
 
 public class AnimalCreator {
     public AnimalCreator(Stage stage, Group gameDisplay, Animal animal, Point2D location){

@@ -1,4 +1,4 @@
-package sve.gui.sample;
+package sve.gui;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
