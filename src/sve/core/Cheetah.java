@@ -3,7 +3,12 @@ package sve.core;
 import sve.gui.RenderTypes;
 
 public class Cheetah extends Animal {
-    @Override
+	
+	public Cheetah(Sex sex, int age, int weight, int height, double speed, int gestation){
+		// TODO
+	}
+	
+	@Override
     public double speed() {
         // TODO Auto-generated method stub
         return 0;
@@ -67,4 +72,10 @@ public class Cheetah extends Animal {
     public String pathTo(RenderTypes type) {
         return "file:src/sve/gui/images/64-cheetah.jpg";
     }
+    
+    @Override
+	public int gestation() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
