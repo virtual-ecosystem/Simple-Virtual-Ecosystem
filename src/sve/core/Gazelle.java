@@ -65,6 +65,6 @@ public class Gazelle extends Animal {
 
     @Override
     public String pathTo(RenderTypes type) {
-        return "file:src/sve/gui/sample/images/64-gazelle.jpg";
+        return "file:src/sve/gui/images/64-gazelle.jpg";
     }
 }
