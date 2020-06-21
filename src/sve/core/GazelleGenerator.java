@@ -1,3 +1,5 @@
+package sve.core;
+
 import java.util.ArrayList;
 import java.util.Random;
 

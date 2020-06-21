@@ -4,9 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Random;
 
 public abstract class AnimalGenerator implements RuntimeGenerator<Animal> {
 	
@@ -85,30 +85,34 @@ public abstract class AnimalGenerator implements RuntimeGenerator<Animal> {
 	 * @param animals ArrayList of Animal to be wrote
 	 */
 	public void write(File file, ArrayList<Animal> animals){
-		
-		FileWriter fWriter = new FileWriter(file);
-		LinkedList<LinkedList<String>> mainList = new LinkedList<LinkedList<String>>();
-		for(int i=0; i<animals.size(); i++){
-				
-			LinkedList<String> subList = new LinkedList<String>();
-							
-			subList.addFirst(animals.get(i).sex().toString());
-			subList.addFirst(Integer.toString(animals.get(i).age()));
-			subList.addFirst(Integer.toString(animals.get(i).gestation()));
-			subList.addFirst(Integer.toString(animals.get(i).weight()));
-			subList.addFirst(Integer.toString(animals.get(i).height()));
-			subList.addFirst(Double.toString(animals.get(i).speed()));
-			mainList.addFirst(subList);
-		}
-		while(mainList.size()!=0){
-			while(mainList.getFirst().size() !=0 ){
-				fWriter.append(mainList.getFirst().poll());
-				fWriter.append(",");
+		try{
+			FileWriter fWriter = new FileWriter(file);
+			LinkedList<LinkedList<String>> mainList = new LinkedList<LinkedList<String>>();
+			for(int i=0; i<animals.size(); i++){
+					
+				LinkedList<String> subList = new LinkedList<String>();
+								
+				subList.addFirst(animals.get(i).sex().toString());
+				subList.addFirst(Integer.toString(animals.get(i).age()));
+				subList.addFirst(Integer.toString(animals.get(i).gestation()));
+				subList.addFirst(Integer.toString(animals.get(i).weight()));
+				subList.addFirst(Integer.toString(animals.get(i).height()));
+				subList.addFirst(Double.toString(animals.get(i).speed()));
+				mainList.addFirst(subList);
 			}
-			mainList.poll();
-			fWriter.append("\n");
+			while(mainList.size()!=0){
+				while(mainList.getFirst().size() !=0 ){
+					fWriter.append(mainList.getFirst().poll());
+					fWriter.append(",");
+				}
+				mainList.poll();
+				fWriter.append("\n");
+			}
+			fWriter.close();	
+		}catch(IOException e){
+			
 		}
-		fWriter.close();	
+		
 	}
 	
 	/**
