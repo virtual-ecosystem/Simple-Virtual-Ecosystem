@@ -7,7 +7,7 @@ import sve.event.EventManager;
  *
  *@author repelliuss
  */
-public class SVE {
+public class SVE implements SVEModule {
 
 	private static EventManager eventManager;
 
@@ -22,15 +22,18 @@ public class SVE {
 		finish();
 	}
 
-	private void init() {
+	@Override
+	public void init() {
 		//TODO
 	}
 
-	private void update() {
+	@Override
+	public void update() {
 		//TODO
 	}
 
-	private void finish() {
+	@Override
+	public void finish() {
 		//TODO
 	}
 
