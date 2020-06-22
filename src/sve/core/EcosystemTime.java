@@ -70,7 +70,7 @@ public class EcosystemTime {
 		year += month / 12;
 		month = month % 12;
 
-		callTimeEvents(checkpoint);
+		invokeEvents(checkpoint);
 	}
 
 	private void invokeEvents(EcosystemTime checkpoint) {
