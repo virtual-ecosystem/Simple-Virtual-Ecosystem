@@ -1,5 +1,9 @@
 package sve.core;
 
+import sve.event.Listener;
+import sve.event.EventManager;
+import sve.event.EventType;
+
 public class EcosystemTime {
 
 	private int year, month, day, hour, minute, second;
@@ -8,15 +12,19 @@ public class EcosystemTime {
 
 	private double secRelativity;
 
-	public EcosystemTime() {
-		this(0.25);
-	}
-
 	public EcosystemTime(double dayRelativity) {
 		this.year = this.day = this.hour = this.minute = this.second = 0;
 		this.month = 0;
 		this.offsecond = 0.0;
 		this.secRelativity = computeRelativeSeconds(dayRelativity);
+	}
+
+	private EcosystemTime(EcosystemTime other) {
+		this.year = other.year;
+		this.month = other.month;
+		this.day = other.day;
+		this.hour = other.hour;
+		this.minute = other.minute;
 	}
 
 	public void advanceRelatively(double deltaTime) {
@@ -44,6 +52,9 @@ public class EcosystemTime {
 	}
 
 	private void calculateNewTime(int passedSeconds) {
+
+		EcosystemTime checkpoint = new EcosystemTime(this);
+
 		minute += passedSeconds / 60;
 		second = passedSeconds % 60;
 
@@ -58,6 +69,31 @@ public class EcosystemTime {
 
 		year += month / 12;
 		month = month % 12;
+
+		callTimeEvents(checkpoint);
+	}
+
+	private void invokeEvents(EcosystemTime checkpoint) {
+
+		EventManager eg = SVE.getEventManager();
+
+		if(eg == null)
+			return;
+
+		for(int current = minute; current - checkpoint.minute > 1; --current)
+			eg.callEvent(EventType.TIME_MINUTE);
+
+		for(int current = hour; current - checkpoint.hour > 1; --current)
+			eg.callEvent(EventType.TIME_HOUR);
+
+		for(int current = day; current - checkpoint.day > 1; --current)
+			eg.callEvent(EventType.TIME_DAY);
+
+		for(int current = month; current - checkpoint.month > 1; --current)
+			eg.callEvent(EventType.TIME_MONTH);
+
+		for(int current = year; current - checkpoint.year > 1; --current)
+			eg.callEvent(EventType.TIME_YEAR);
 	}
 
 	private double computeSeconds(double deltaTime) {
