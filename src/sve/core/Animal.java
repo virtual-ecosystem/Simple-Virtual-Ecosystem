@@ -30,12 +30,6 @@ public abstract class Animal implements LivingBeing, LifeTime, Movable, Renderab
 	}
 	
 	@Override
-	public void updateWeekly() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void updateMonthly() {
 		// TODO Auto-generated method stub
 		
