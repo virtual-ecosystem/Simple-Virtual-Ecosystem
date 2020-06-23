@@ -16,11 +16,11 @@ public class StatisticsTab {
         super();
     }
 
-    public StatisticsTab(String text,GraphType type){
-        addTab(text,type);
+    public StatisticsTab(String text,GraphType type,int bound){
+        addTab(text,type,bound);
     }
 
-    public void addTab(String text,GraphType type){
+    public void addTab(String text,GraphType type,int bound){
         Random random = new Random();
         SVECharts sveCharts = new SVECharts();
         sveCharts.getLineChart(type).addNewLine("Cheetah");
@@ -34,8 +34,8 @@ public class StatisticsTab {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    sveCharts.getLineChart(type).add(random.nextInt(100),"Cheetah");
-                    sveCharts.getLineChart(type).add(random.nextInt(100),"Gazelle");
+                    sveCharts.getLineChart(type).add(random.nextInt(bound),"Cheetah");
+                    sveCharts.getLineChart(type).add(random.nextInt(bound),"Gazelle");
                 }
             }
         };

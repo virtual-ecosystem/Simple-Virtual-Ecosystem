@@ -71,9 +71,11 @@ public class SecondScene implements environmentConstants {
         tab0.setContent(myGroup);
 
         Tab tab1 = new Tab("Statistics");
-        StatisticsTab stat = new StatisticsTab("Population",GraphType.POPULATION);
-        stat.addTab("Birth",GraphType.BIRTH);
-        stat.addTab("Death",GraphType.DEATH);
+        StatisticsTab stat = new StatisticsTab("Population",GraphType.POPULATION,100);
+        stat.addTab("Birth",GraphType.BIRTH,50);
+        stat.addTab("Death",GraphType.DEATH,50);
+        stat.addTab("Food",GraphType.FOOD,10);
+        stat.addTab("Reproductive",GraphType.REPRODUCTIVE,25);
         TabPane statisticsTab = stat.getTabPane();
         tab1.setContent(statisticsTab);
 

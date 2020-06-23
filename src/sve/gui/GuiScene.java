@@ -25,8 +25,8 @@ public class GuiScene extends Application implements EventHandler<ActionEvent>,e
     }
 
     @Override
-    public void stop() throws Exception {
-        SVE.getEventManager().callEvent(EventType.QUIT);
+    public void stop(){
+
     }
 
     public static void start(){
@@ -50,7 +50,7 @@ public class GuiScene extends Application implements EventHandler<ActionEvent>,e
 
     @Override
     public void finish() {
-
+        stop();
     }
 }
 
