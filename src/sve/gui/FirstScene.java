@@ -1,11 +1,15 @@
 package sve.gui;
 
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import sve.core.SVE;
+import sve.event.EventType;
 
 public class FirstScene implements environmentConstants {
     private Scene scene;
@@ -46,6 +50,12 @@ public class FirstScene implements environmentConstants {
         start.setTranslateX(0);
         start.setTranslateY(-150);
         start.setOnAction(e -> window.setScene(secondScene.getScene()));
+        start.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                SVE.getEventManager().callEvent(EventType.START_SVE);
+            }
+        });
 
         options = new Button(text2);
         options.setId("firstSceneButton");
@@ -60,6 +70,12 @@ public class FirstScene implements environmentConstants {
         exit.setTranslateX(0);
         exit.setTranslateY(150);
         exit.setOnAction(e -> Platform.exit());
+        exit.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                SVE.getEventManager().callEvent(EventType.QUIT);
+            }
+        });
     }
 
     public Scene getScene(){ return scene; }

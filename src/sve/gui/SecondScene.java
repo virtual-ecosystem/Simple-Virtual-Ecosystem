@@ -7,19 +7,15 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import sve.core.Cheetah;
-import sve.core.Gazelle;
-import sve.core.Point2D;
-import sve.core.Sex;
+import sve.core.*;
+import sve.event.EventType;
+import sve.stats.GraphType;
 
 import static sve.gui.helperMethods.randomlyLocationX;
 import static sve.gui.helperMethods.randomlyLocationY;
@@ -59,6 +55,12 @@ public class SecondScene implements environmentConstants {
         Button back = new Button("Back to Menu");
         back.setAlignment(Pos.TOP_LEFT);
         back.setOnAction(e -> stage.setScene(firstScene.getScene()));
+        back.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                SVE.getEventManager().callEvent(EventType.STOP_SVE);
+            }
+        });
 
         TabPane tabPane = new TabPane();
         tabPane.setId("tabPane");
@@ -69,34 +71,15 @@ public class SecondScene implements environmentConstants {
         tab0.setContent(myGroup);
 
         Tab tab1 = new Tab("Statistics");
-        Label label = new Label("Şuanlık buraya bir şey eklemedim.");
-        Font val = new Font(35.6);
-        label.setFont(val);
-        Group statistics = new Group();
-        statistics.getChildren().add(label);
-        tab1.setContent(statistics);
+        StatisticsTab stat = new StatisticsTab("Population",GraphType.POPULATION,100);
+        stat.addTab("Birth",GraphType.BIRTH,50);
+        stat.addTab("Death",GraphType.DEATH,50);
+        stat.addTab("Food",GraphType.FOOD,10);
+        stat.addTab("Reproductive",GraphType.REPRODUCTIVE,25);
+        TabPane statisticsTab = stat.getTabPane();
+        tab1.setContent(statisticsTab);
 
-        Tab tab2 = new Tab("Planned Features");
-        Label label2 = new Label("- Arkadaki harita hareket edicek.");
-        Label label3 = new Label("- Harita tam anlamıyla random bir şekilde atanacak.");
-        Label label4 = new Label("- Parametreler simulasyona entegre edilecek.");
-        Label label5 = new Label("- Graph'lar 2.sekmeye eklenicek.");
-        label3.setLayoutY(label2.getLayoutY()+50);
-        label4.setLayoutY(label3.getLayoutY()+50);
-        label5.setLayoutY(label4.getLayoutY()+50);
-        label2.setFont(val);
-        label3.setFont(val);
-        label4.setFont(val);
-        label5.setFont(val);
-        label2.setTextFill(Color.RED);
-        label3.setTextFill(Color.RED);
-        label4.setTextFill(Color.RED);
-        label5.setTextFill(Color.RED);
-        Group features = new Group();
-        features.getChildren().addAll(label2,label3,label4,label5);
-        tab2.setContent(features);
-
-        tabPane.getTabs().addAll(tab0,tab1,tab2);
+        tabPane.getTabs().addAll(tab0,tab1);
 
         BorderPane borderPane = new BorderPane(tabPane);
         borderPane.setTop(back);
@@ -105,7 +88,7 @@ public class SecondScene implements environmentConstants {
     }
 
     public Group secondSceneGroupCreator(Stage stage) {
-        gameDisplay.getStylesheets().add(getClass().getResource("GameDisplay.css").toExternalForm());
+        gameDisplay.getStylesheets().add(getClass().getResource( "GameDisplay.css").toExternalForm());
 
         secondSceneBackgroundCreator(stage,gameDisplay);
 

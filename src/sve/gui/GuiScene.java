@@ -1,11 +1,17 @@
 package sve.gui;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import sve.core.SVE;
+import sve.core.SVEModule;
+import sve.event.EventType;
 
-public class GuiScene extends Application implements EventHandler<ActionEvent>,environmentConstants{
+public class GuiScene extends Application implements EventHandler<ActionEvent>,environmentConstants,SVEModule {
     private FirstScene firstScene = new FirstScene(new Stage());
 
     @Override
@@ -18,13 +24,32 @@ public class GuiScene extends Application implements EventHandler<ActionEvent>,e
         primaryStage.show();
     }
 
-    public void start(){
-        launch();
+    @Override
+    public void stop(){
+
+    }
+
+    public static void start(){
+        GuiScene.launch(GuiScene.class);
     }
 
     @Override
     public void handle(ActionEvent event) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void finish() {
     }
 }
 
