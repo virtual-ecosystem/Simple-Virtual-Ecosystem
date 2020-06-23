@@ -14,7 +14,7 @@ public class Graphicer implements RuntimeGenerator<Session> {
 		// TODO Auto-generated method stub
 	}
 	
-	public void draw(GraphType gtype, Point2D data) {
+	public void draw(GraphType gtype, Point2D<Integer> data) {
 		// TODO Auto-generated method stub
 	}
 	

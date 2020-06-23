@@ -19,7 +19,7 @@ public class Gazelle extends Animal {
         return "file:src/sve/gui/images/64-gazelle.jpg";
     }
 	@Override
-	public Point2D goTo(Condition condition) {
+	public Point2D<Integer> goTo(Condition condition) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -16,7 +16,7 @@ import static sve.gui.helperMethods.randomlyLocationX;
 import static sve.gui.helperMethods.randomlyLocationY;
 
 public class AnimalCreator {
-    public AnimalCreator(Stage stage, Group gameDisplay, Animal animal, Point2D location){
+    public AnimalCreator(Stage stage, Group gameDisplay, Animal animal, Point2D<Integer> location){
         String imagePath = animal.pathTo(RenderTypes.ICON);
 
         ImageView imageView = new ImageView(new Image(imagePath));

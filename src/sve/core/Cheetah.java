@@ -14,7 +14,7 @@ public class Cheetah extends Animal {
 	}
 
 	@Override
-	public Point2D goTo(Condition condition) {
+	public Point2D<Integer> goTo(Condition condition) {
 		// TODO Auto-generated method stub
 		return null;
 	}

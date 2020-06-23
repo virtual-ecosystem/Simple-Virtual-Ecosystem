@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import sve.core.Point2D;
 
 public class Session {
-	LinkedList<Point2D> data;
+	LinkedList<Point2D<Integer>> data;
 	int sessionID;
 	GraphType type;
 	
