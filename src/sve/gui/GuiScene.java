@@ -24,11 +24,6 @@ public class GuiScene extends Application implements EventHandler<ActionEvent>,e
         primaryStage.show();
     }
 
-    @Override
-    public void stop(){
-
-    }
-
     public static void start(){
         GuiScene.launch(GuiScene.class);
     }
@@ -50,6 +45,11 @@ public class GuiScene extends Application implements EventHandler<ActionEvent>,e
 
     @Override
     public void finish() {
+    }
+
+    @Override
+    public void stop(){
+        System.exit(0);
     }
 }
 
