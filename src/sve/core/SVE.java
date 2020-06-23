@@ -1,6 +1,7 @@
 package sve.core;
 
 import sve.event.EventManager;
+import sve.gui.GuiScene;
 
 /**
  *Main class for SVE system
@@ -24,7 +25,7 @@ public class SVE implements SVEModule {
 
 	@Override
 	public void init() {
-		//TODO
+		GuiScene.start();
 	}
 
 	@Override
