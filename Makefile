@@ -51,6 +51,9 @@ SRCS := $(call rwildcard, src, *.java)
 #BUILD DIRECTORY
 BUILDDIR := build/
 
+#ASSETS DIRECTORY
+ASSETSDIR := assets/
+
 ifneq ($(TEST), -1)
 
 #EXEC
@@ -64,7 +67,7 @@ EXEC := ScenarioCheela
 endif
 
 #FX LIBRARIES
-JAVAFX := --module-path $(PATH_TO_FX) --add-modules javafx.controls,javafx.swing
+JAVAFX := --module-path $(PATH_TO_FX) --add-modules javafx.controls,javafx.fxml,javafx.swing
 
 CLASSES := $(SRCS:$(SRCDIR)%.java=$(BUILDDIR)%.class)
 
@@ -72,7 +75,7 @@ COMPILEINFO := 1
 
 $(EXEC): $(CLASSES)
 	@echo -e $(PURPLE) Running... $(ENDCOLOR)
-	$(JVM) -classpath $(BUILDDIR)$(JPATHSEP)$(PATH_TO_JFREE) $(JAVAFX) $@ $(TEST)
+	$(JVM) -classpath $(ASSETSDIR)$(JPATHSEP)$(BUILDDIR)$(JPATHSEP)$(PATH_TO_JFREE) $(JAVAFX) $@ $(TEST)
 	@echo $(RED) Successful! $(ENDCOLOR)
 
 $(BUILDDIR)%.class: $(SRCDIR)%.java | $(BUILDDIR)
