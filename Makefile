@@ -64,7 +64,7 @@ EXEC := ScenarioCheela
 endif
 
 #FX LIBRARIES
-JAVAFX := --module-path $(PATH_TO_FX) --add-modules javafx.controls
+JAVAFX := --module-path $(PATH_TO_FX) --add-modules javafx.controls,javafx.swing
 
 CLASSES := $(SRCS:$(SRCDIR)%.java=$(BUILDDIR)%.class)
 
@@ -72,7 +72,7 @@ COMPILEINFO := 1
 
 $(EXEC): $(CLASSES)
 	@echo -e $(PURPLE) Running... $(ENDCOLOR)
-	$(JVM) -classpath $(BUILDDIR) $(JAVAFX) $@ $(TEST)
+	$(JVM) -classpath $(BUILDDIR)$(JPATHSEP)$(PATH_TO_JFREE) $(JAVAFX) $@ $(TEST)
 	@echo $(RED) Successful! $(ENDCOLOR)
 
 $(BUILDDIR)%.class: $(SRCDIR)%.java | $(BUILDDIR)
@@ -80,7 +80,7 @@ $(BUILDDIR)%.class: $(SRCDIR)%.java | $(BUILDDIR)
 		echo $(BLUE) Compiling: $(ENDCOLOR); \
 		$(eval COMPILEINFO = 0) \
 	fi;
-	$(JC) -d $(BUILDDIR) -classpath $(SRCDIR) $(JAVAFX) $<
+	$(JC) -d $(BUILDDIR) -classpath $(SRCDIR)$(JPATHSEP)$(PATH_TO_JFREE) $(JAVAFX) $<
 
 $(BUILDDIR):
 	@echo -e $(GRAY) Creating folder $@ $(ENDCOLOR)
