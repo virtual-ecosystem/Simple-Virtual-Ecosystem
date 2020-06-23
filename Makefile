@@ -67,7 +67,7 @@ EXEC := ScenarioCheela
 endif
 
 #FX LIBRARIES
-JAVAFX := --module-path $(PATH_TO_FX) --add-modules javafx.controls,javafx.fxml,javafx.swing
+JAVAFX := --module-path $(PATH_TO_FX) --add-modules javafx.controls,javafx.swing
 
 CLASSES := $(SRCS:$(SRCDIR)%.java=$(BUILDDIR)%.class)
 
