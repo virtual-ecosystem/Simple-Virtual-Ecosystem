@@ -14,6 +14,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sve.core.SVE;
+import sve.event.EventType;
 
 public class OptionScene implements environmentConstants{
     private Scene scene;
@@ -89,6 +91,12 @@ public class OptionScene implements environmentConstants{
         back.setId("firstSceneButton");
         back.setAlignment(Pos.TOP_LEFT);
         back.setOnAction(e -> stage.setScene(firstScene.getScene()));
+        back.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                SVE.getEventManager().callEvent(EventType.STOP_SVE);
+            }
+        });
 
         VBox vbox = new VBox(label,mapWidthText,mapHeightText,sliderHbox,save);
         vbox.setAlignment(Pos.CENTER);

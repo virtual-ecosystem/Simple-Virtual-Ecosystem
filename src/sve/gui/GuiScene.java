@@ -6,7 +6,10 @@ import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import sve.core.SVE;
 import sve.core.SVEModule;
+import sve.event.EventType;
 
 public class GuiScene extends Application implements EventHandler<ActionEvent>,environmentConstants,SVEModule {
     private FirstScene firstScene = new FirstScene(new Stage());
@@ -19,6 +22,11 @@ public class GuiScene extends Application implements EventHandler<ActionEvent>,e
 
         primaryStage.setScene(firstScene.getScene());
         primaryStage.show();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        SVE.getEventManager().callEvent(EventType.QUIT);
     }
 
     public static void start(){

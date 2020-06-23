@@ -13,10 +13,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import sve.core.Cheetah;
-import sve.core.Gazelle;
-import sve.core.Point2D;
-import sve.core.Sex;
+import sve.core.*;
+import sve.event.EventType;
 import sve.stats.GraphType;
 
 import static sve.gui.helperMethods.randomlyLocationX;
@@ -57,6 +55,12 @@ public class SecondScene implements environmentConstants {
         Button back = new Button("Back to Menu");
         back.setAlignment(Pos.TOP_LEFT);
         back.setOnAction(e -> stage.setScene(firstScene.getScene()));
+        back.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                SVE.getEventManager().callEvent(EventType.QUIT);
+            }
+        });
 
         TabPane tabPane = new TabPane();
         tabPane.setId("tabPane");
