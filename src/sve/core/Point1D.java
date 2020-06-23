@@ -1,10 +1,10 @@
 package sve.core;
 
-public class Point1D {
+public class Point1D<E> {
 
-	int x;
+	E x;
 	
-	public Point1D(int x) {
+	public Point1D(E x) {
 		this.x = x;
 	}
 }

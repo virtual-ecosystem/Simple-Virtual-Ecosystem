@@ -111,9 +111,9 @@ public class SecondScene implements environmentConstants {
     }
 
     private void secondSceneAnimalCreator(Stage stage,Group gameDisplay){
-        AnimalCreator cheetah = new AnimalCreator(stage,gameDisplay,new Cheetah(Sex.FEMALE, 10, 10, 10, 10, 10),new Point2D(randomlyLocationX(mapWidth),randomlyLocationY(mapHeight)));
+        AnimalCreator cheetah = new AnimalCreator(stage,gameDisplay,new Cheetah(Sex.FEMALE, 10, 10, 10, 10, 10),new Point2D<Integer>(randomlyLocationX(mapWidth),randomlyLocationY(mapHeight)));
 
-        AnimalCreator gazelle = new AnimalCreator(stage,gameDisplay,new Gazelle(Sex.FEMALE, 10, 10, 10, 10, 10),new Point2D(randomlyLocationX(mapWidth),randomlyLocationY(mapHeight)));
+        AnimalCreator gazelle = new AnimalCreator(stage,gameDisplay,new Gazelle(Sex.FEMALE, 10, 10, 10, 10, 10),new Point2D<Integer>(randomlyLocationX(mapWidth),randomlyLocationY(mapHeight)));
     }
 
     public Scene getScene(){ return scene; }

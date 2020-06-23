@@ -1,10 +1,10 @@
 package sve.core;
 
-public class Point2D extends Point1D {
+public class Point2D<E> extends Point1D<E> {
 
-	int y;
+	E y;
 	
-	public Point2D(int x, int y) {
+	public Point2D(E x, E y) {
 		super(x);
 		this.y = y;
 	}

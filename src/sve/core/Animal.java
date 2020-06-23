@@ -40,6 +40,4 @@ public abstract class Animal implements LivingBeing, LifeTime, Movable, Renderab
 		// TODO Auto-generated method stub
 		
 	}
-
-
 }
