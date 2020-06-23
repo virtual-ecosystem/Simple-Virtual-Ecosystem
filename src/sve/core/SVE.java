@@ -10,10 +10,9 @@ import sve.gui.GuiScene;
  */
 public class SVE implements SVEModule {
 
-	private static EventManager eventManager;
+	private static EventManager eventManager = new EventManager();;
 
 	public SVE() {
-		this.eventManager = new EventManager();
 	}
 
 	public void start() {
