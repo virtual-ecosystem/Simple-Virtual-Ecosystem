@@ -105,7 +105,7 @@ public class OptionScene implements environmentConstants{
         borderPane.setTop(back);
 
         this.scene = new Scene(borderPane,MAIN_WIDTH,MAIN_HEIGHT);
-        this.scene.getStylesheets().add("file:src/sve/gui/GameDisplay.css");
+        this.scene.getStylesheets().add("file:assets/GameDisplay.css");
     }
 
     public Scene getScene(){ return scene; }

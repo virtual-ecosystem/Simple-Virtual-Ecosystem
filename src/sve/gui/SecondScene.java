@@ -17,6 +17,8 @@ import sve.core.*;
 import sve.event.EventType;
 import sve.stats.GraphType;
 
+import java.io.File;
+
 import static sve.gui.helperMethods.randomlyLocationX;
 import static sve.gui.helperMethods.randomlyLocationY;
 
@@ -64,7 +66,7 @@ public class SecondScene implements environmentConstants {
 
         TabPane tabPane = new TabPane();
         tabPane.setId("tabPane");
-        tabPane.getStylesheets().add(getClass().getResource("GameDisplay.css").toExternalForm());
+        tabPane.getStylesheets().add(getClass().getResource("/GameDisplay.css").toExternalForm());
 
         Group myGroup = secondSceneGroupCreator(stage);
         Tab tab0 = new Tab("Main Tab");
@@ -88,7 +90,7 @@ public class SecondScene implements environmentConstants {
     }
 
     public Group secondSceneGroupCreator(Stage stage) {
-        gameDisplay.getStylesheets().add(getClass().getResource( "GameDisplay.css").toExternalForm());
+        gameDisplay.getStylesheets().add(getClass().getResource("/GameDisplay.css").toExternalForm());
 
         secondSceneBackgroundCreator(stage,gameDisplay);
 
