@@ -5,7 +5,7 @@ import sve.gui.RenderTypes;
 public class Cheetah extends Animal {
 	
 	public Cheetah(Sex sex, int age, int weight, int height, double speed, int gestation){
-		// TODO
+        super(sex, age, weight, height, speed, gestation);
 	}
 
     @Override

@@ -5,13 +5,7 @@ import sve.gui.RenderTypes;
 public class Gazelle extends Animal {
 	
 	public Gazelle(Sex sex, int age, int weight, int height, double speed, int gestation){
-		// TODO
-	}
-	
-	@Override
-    public double speed() {
-        // TODO Auto-generated method stub
-        return 0;
+        super(sex, age, weight, height, speed, gestation);
     }
 
     @Override
