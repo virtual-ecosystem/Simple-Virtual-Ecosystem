@@ -6,6 +6,11 @@ import sve.gui.Renderable;
 public abstract class Animal implements LivingBeing, LifeTime, Movable, Renderable {
 
 	@Override
+	public Point2D<Integer> location() {
+		return location;
+	}
+
+	@Override
 	public double speed() {
 		// TODO Auto-generated method stub
 		return 0;

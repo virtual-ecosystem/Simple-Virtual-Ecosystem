@@ -70,4 +70,6 @@ public interface LivingBeing extends Resource {
 	 * @return gestation of living beings in months, 0 for males
 	 */
 	int gestation();
+
+	Point2D<Integer> location();
 }
