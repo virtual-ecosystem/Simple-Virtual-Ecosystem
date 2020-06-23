@@ -1,6 +1,7 @@
 package sve.gui;
 
 import javafx.animation.AnimationTimer;
+import javafx.embed.swing.SwingNode;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -20,6 +21,7 @@ import sve.core.Cheetah;
 import sve.core.Gazelle;
 import sve.core.Point2D;
 import sve.core.Sex;
+import sve.stats.LineChart;
 
 import static sve.gui.helperMethods.randomlyLocationX;
 import static sve.gui.helperMethods.randomlyLocationY;
@@ -69,11 +71,14 @@ public class SecondScene implements environmentConstants {
         tab0.setContent(myGroup);
 
         Tab tab1 = new Tab("Statistics");
+        LineChart lineChart = new LineChart("Test","Test-x","Test-y");
+        //SwingNode swingNode = lineChart.getChartAsSwingNode();
+
         Label label = new Label("Şuanlık buraya bir şey eklemedim.");
         Font val = new Font(35.6);
         label.setFont(val);
         Group statistics = new Group();
-        statistics.getChildren().add(label);
+        //statistics.getChildren().add(swingNode);
         tab1.setContent(statistics);
 
         Tab tab2 = new Tab("Planned Features");

@@ -1,6 +1,8 @@
 package sve.gui;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
@@ -19,6 +21,10 @@ public class GuiScene extends Application implements EventHandler<ActionEvent>,e
         primaryStage.show();
     }
 
+    public static void start(){
+        GuiScene.launch(GuiScene.class);
+    }
+
     @Override
     public void handle(ActionEvent event) {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -26,7 +32,7 @@ public class GuiScene extends Application implements EventHandler<ActionEvent>,e
 
     @Override
     public void init(){
-        launch();
+
     }
 
     @Override
