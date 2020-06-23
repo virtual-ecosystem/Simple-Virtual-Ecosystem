@@ -50,7 +50,6 @@ public class GuiScene extends Application implements EventHandler<ActionEvent>,e
 
     @Override
     public void finish() {
-        stop();
     }
 }
 

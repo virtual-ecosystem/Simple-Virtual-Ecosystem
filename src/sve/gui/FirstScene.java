@@ -63,12 +63,6 @@ public class FirstScene implements environmentConstants {
         options.setTranslateX(0);
         options.setTranslateY(0);
         options.setOnAction(e -> window.setScene(optionScene.getScene()));
-        options.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                SVE.getEventManager().callEvent(EventType.STOP_SVE);
-            }
-        });
 
         exit = new Button(text3);
         exit.setId("firstSceneButton");

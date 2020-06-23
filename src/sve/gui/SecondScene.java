@@ -58,7 +58,7 @@ public class SecondScene implements environmentConstants {
         back.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                SVE.getEventManager().callEvent(EventType.QUIT);
+                SVE.getEventManager().callEvent(EventType.STOP_SVE);
             }
         });
 

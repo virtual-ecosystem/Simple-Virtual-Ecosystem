@@ -91,12 +91,6 @@ public class OptionScene implements environmentConstants{
         back.setId("firstSceneButton");
         back.setAlignment(Pos.TOP_LEFT);
         back.setOnAction(e -> stage.setScene(firstScene.getScene()));
-        back.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                SVE.getEventManager().callEvent(EventType.STOP_SVE);
-            }
-        });
 
         VBox vbox = new VBox(label,mapWidthText,mapHeightText,sliderHbox,save);
         vbox.setAlignment(Pos.CENTER);
