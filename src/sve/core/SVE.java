@@ -19,6 +19,8 @@ public class SVE implements SVEModule, Listener {
 
 	private boolean quitSve, isWorking;
 
+	private EcosystemTime etime;
+
 	public SVE() {
 
 		ArrayList<Animal> animals = new ArrayList<>();
@@ -33,6 +35,8 @@ public class SVE implements SVEModule, Listener {
 		this.database = new SVEDatabase(animals);
 
 		this.quitSve = this.isWorking = false;
+
+		this.etime = new EcosystemTime(0.25);
 	}
 
 	public void start() {
@@ -50,7 +54,7 @@ public class SVE implements SVEModule, Listener {
 
 	@Override
 	public void update() {
-		//TODO
+		Time deltaTime = new Time();
 	}
 
 	@Override
