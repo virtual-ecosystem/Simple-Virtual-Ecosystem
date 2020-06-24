@@ -21,10 +21,11 @@ public class EventManager {
 	 */
 	public boolean register(EventType etype, Listener listener) {
 
-		Speaker speaker = events.get(etype);
-		if(speaker == null) {
-			speaker = events.put(etype, new Speaker());
+		if(!events.containsKey(etype)) {
+			events.put(etype, new Speaker());
 		}
+
+		Speaker speaker = events.get(etype);
 
 		return speaker.add(listener);
 	}
