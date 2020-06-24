@@ -3,6 +3,8 @@ package sve.core;
 import sve.event.EventManager;
 import sve.gui.GuiScene;
 import java.util.ArrayList;
+import sve.event.EventType;
+import sve.event.Listener;
 
 /**
  *Main class for SVE system
@@ -11,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SVE implements SVEModule {
 
-	private static EventManager eventManager = new EventManager();;
+	private static EventManager eventManager = new EventManager();
 
 	private SVEDatabase database;
 
@@ -38,6 +40,12 @@ public class SVE implements SVEModule {
 
 	@Override
 	public void init() {
+		Listener aeh = new AnimalEventHandler();
+		eventManager.register(EventType.TIME_MINUTE, aeh);
+		eventManager.register(EventType.TIME_HOUR, aeh);
+		eventManager.register(EventType.TIME_DAY, aeh);
+		eventManager.register(EventType.TIME_MONTH, aeh);
+		eventManager.register(EventType.TIME_YEAR, aeh);
 		GuiScene.start();
 	}
 
