@@ -9,7 +9,6 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * Creates a line chart by using JFreeChart
@@ -18,7 +17,7 @@ public class LineChart {
 
     private JFreeChart theChart;
     private XYSeriesCollection dataSet;
-    private Queue<Integer> data;
+    private LinkedList<Integer> data;
     private HashMap<String,Line> series;
     //private int time;
 
@@ -89,7 +88,7 @@ public class LineChart {
      * returns the data.
      * @return the data.
      */
-    public Queue<Integer> getTheContainer(){
+    public LinkedList<Integer> getTheContainer(){
         return data;
     }
 
