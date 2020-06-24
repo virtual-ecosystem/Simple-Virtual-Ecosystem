@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Stack;
 
 public abstract class AnimalGenerator implements RuntimeGenerator<Animal> {
 	
@@ -87,25 +88,25 @@ public abstract class AnimalGenerator implements RuntimeGenerator<Animal> {
 	public void write(File file, ArrayList<Animal> animals){
 		try{
 			FileWriter fWriter = new FileWriter(file);
-			LinkedList<LinkedList<String>> mainList = new LinkedList<LinkedList<String>>();
+			Stack<Stack<String>> mainList = new Stack<Stack<String>>();
 			for(int i=0; i<animals.size(); i++){
 					
-				LinkedList<String> subList = new LinkedList<String>();
+				Stack<String> subList = new Stack<String>();
 								
-				subList.addFirst(animals.get(i).sex().toString());
-				subList.addFirst(Integer.toString(animals.get(i).age()));
-				subList.addFirst(Integer.toString(animals.get(i).gestation()));
-				subList.addFirst(Integer.toString(animals.get(i).weight()));
-				subList.addFirst(Integer.toString(animals.get(i).height()));
-				subList.addFirst(Double.toString(animals.get(i).speed()));
-				mainList.addFirst(subList);
+				subList.push(animals.get(i).sex().toString());
+				subList.push(Integer.toString(animals.get(i).age()));
+				subList.push(Integer.toString(animals.get(i).gestation()));
+				subList.push(Integer.toString(animals.get(i).weight()));
+				subList.push(Integer.toString(animals.get(i).height()));
+				subList.push(Double.toString(animals.get(i).speed()));
+				mainList.push(subList);
 			}
 			while(mainList.size()!=0){
-				while(mainList.getFirst().size() !=0 ){
-					fWriter.append(mainList.getFirst().poll());
+				while(mainList.peek().size() !=0 ){
+					fWriter.append(mainList.peek().pop());
 					fWriter.append(",");
 				}
-				mainList.poll();
+				mainList.pop();
 				fWriter.append("\n");
 			}
 			fWriter.close();	
