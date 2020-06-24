@@ -9,13 +9,13 @@ import java.util.ArrayList;
  */
 public class SVEDatabase {
 
-	private ArrayList<Animal> animals;
+	private static ArrayList<Animal> animals;
 
 	public SVEDatabase(ArrayList<Animal> animals) {
 		this.animals = animals;
 	}
 
-	public ArrayList<Animal> getAnimals() {
+	public static ArrayList<Animal> getAnimals() {
 		return animals;
 	}
 }
