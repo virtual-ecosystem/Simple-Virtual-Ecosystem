@@ -66,7 +66,7 @@ public class SecondScene implements environmentConstants {
 
         TabPane tabPane = new TabPane();
         tabPane.setId("tabPane");
-        tabPane.getStylesheets().add(getClass().getResource("/GameDisplay.css").toExternalForm());
+        tabPane.getStylesheets().add("file:assets/GameDisplay.css");
 
         Group myGroup = secondSceneGroupCreator(stage);
         Tab tab0 = new Tab("Main Tab");
@@ -87,7 +87,7 @@ public class SecondScene implements environmentConstants {
     }
 
     public Group secondSceneGroupCreator(Stage stage) {
-        gameDisplay.getStylesheets().add(getClass().getResource("/GameDisplay.css").toExternalForm());
+        gameDisplay.getStylesheets().add("file:assets/GameDisplay.css");
 
         secondSceneBackgroundCreator(stage,gameDisplay);
 
