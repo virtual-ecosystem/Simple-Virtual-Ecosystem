@@ -44,12 +44,7 @@ public class SVE implements SVEModule, Listener {
 
 	@Override
 	public void init() {
-		Listener aeh = new AnimalEventHandler();
-		eventManager.register(EventType.TIME_MINUTE, aeh);
-		eventManager.register(EventType.TIME_HOUR, aeh);
-		eventManager.register(EventType.TIME_DAY, aeh);
-		eventManager.register(EventType.TIME_MONTH, aeh);
-		eventManager.register(EventType.TIME_YEAR, aeh);
+		registerEvents();
 		GuiScene.start();
 	}
 
@@ -78,6 +73,19 @@ public class SVE implements SVEModule, Listener {
 				break;
 		}
 	}
+
+	private void registerEvents() {
+		Listener aeh = new AnimalEventHandler();
+		eventManager.register(EventType.TIME_MINUTE, aeh);
+		eventManager.register(EventType.TIME_HOUR, aeh);
+		eventManager.register(EventType.TIME_DAY, aeh);
+		eventManager.register(EventType.TIME_MONTH, aeh);
+		eventManager.register(EventType.TIME_YEAR, aeh);
+		eventManager.register(EventType.QUIT, this);
+		eventManager.register(EventType.START_SVE, this);
+		eventManager.register(EventType.STOP_SVE, this);
+	}
+
 	public static EventManager getEventManager() {
 		return eventManager;
 	}
