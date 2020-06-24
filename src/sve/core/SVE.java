@@ -11,11 +11,13 @@ import sve.event.Listener;
  *
  *@author repelliuss
  */
-public class SVE implements SVEModule {
+public class SVE implements SVEModule, Listener {
 
 	private static EventManager eventManager = new EventManager();
 
 	private SVEDatabase database;
+
+	private boolean quitSve, isWorking;
 
 	public SVE() {
 
@@ -29,6 +31,8 @@ public class SVE implements SVEModule {
 		animals.addAll(aGenerator.generate(10));
 
 		this.database = new SVEDatabase(animals);
+
+		this.quitSve = this.isWorking = false;
 	}
 
 	public void start() {
@@ -59,6 +63,21 @@ public class SVE implements SVEModule {
 		//TODO
 	}
 
+	@Override
+	public void onEvent(EventType etype) {
+
+		switch(etype) {
+			case QUIT:
+				quitSve = true;
+				break;
+			case START_SVE:
+				isWorking = true;
+				break;
+			case STOP_SVE:
+				isWorking = false;
+				break;
+		}
+	}
 	public static EventManager getEventManager() {
 		return eventManager;
 	}
