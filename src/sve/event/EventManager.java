@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 public class EventManager {
 
-	//TODO Change this to NavigableMap
 	private Map<EventType, Speaker> events;
 
 	public EventManager() {
